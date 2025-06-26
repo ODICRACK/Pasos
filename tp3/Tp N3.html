@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestor P2P</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f2e4f9; /* color5 */
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    header div{
+      background-color: #b1e1e9; /* color4 */
+      padding: 20px;
+      color: #686466; /* color1 */
+      border-radius: 0 0 15px 15px;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    .sidebar {
+      width: 250px;
+      margin-top: 20px;
+      border-radius: 10px 10px 0 0;
+      background-color: #839cb5; /* color2 */
+      color: white;
+      padding: 20px;
+    }
+
+    .menu > li {
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .submenu {
+      display: none;
+      margin-left: 15px;
+      margin-top: 5px;
+      list-style-type: circle;
+    }
+
+    .submenu li {
+      margin-bottom: 5px;
+      cursor: pointer;
+      color: #f2e4f9;
+    }
+
+    .main {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    #contenido{
+      width: 100%;
+    }
+    #puclicook {
+    width: 450px;
+    
+    padding: 10px;
+    box-sizing: border-box;
+    }
+
+    #publi img {
+      width: 100%;
+      height: 900px;
+
+    }
+
+    .card {
+      background-color: #f2e4f9;
+      padding: 20px;
+      border-radius: 10px;
+      color: #686466;
+    }
+    #imgEjem{
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .imagenIntro{
+      width: 70%;
+      height: 70%;
+    }
+    #texto{
+      display: flex;
+      width: 100%;
+    }
+    #texto div{
+      width: 50%;
+      padding: 5px;
+    
+    }
+    #texto div:first-child{
+      margin-right: 10px;
+      border-right: 3px solid black;
+    }
+        #texto div:last-child{
+      border-left: 3px solid black;
+    }
+      .comparativo {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: sans-serif;
+    background-color: #f2e4f9; /* color5 */
+  }
+
+  .comparativo th,
+  .comparativo td {
+    border: 1px solid #686466; /* color1 */
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .comparativo th {
+    background-color: #839cb5; /* color2 */
+    color: white;
+    font-weight: bold;
+  }
+
+  .comparativo td {
+    background-color: #ffffff;
+    color: #333;
+  }
+
+  .comparativo caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #686466;
+  }
+    footer {
+      display: flex;
+      background-color: rgb(238, 164, 164);
+      height: 15vh;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    footer div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    footer div h4 {
+      font-size: 20px;
+      padding: 15px;
+    }
+
+    footer div p {
+      color: black;
+      letter-spacing: 2px;
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    footer p {
+      padding: 5px;
+      font-size: 18px;
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div id="header">
+      Ciclos: - Pago (P2P)
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      Temario
+      <ul class="menu">
+        <li onclick="toggleSubmenu(this)">
+          introduccion
+          <ul class="submenu">
+            <li onclick="cargarTema('Descripcion',`inicio`)">Introduccio</li>
+            <li onclick="cargarTema('Cuadro', `Comparativo`)">Cuadro comparativo</li>
+          </ul>
+        </li>
+        <li onclick="toggleSubmenu(this)">
+          P2P
+          <ul class="submenu">
+            <li onclick="cargarTema('P2P',`P2P`)">Introduccion</li>
+            <li onclick="cargarTema('PasosP2P',`P2P`)">Pasos</li>
+          </ul>
+        </li>
+        <li onclick="toggleSubmenu(this)">
+          O2C
+          <ul class="submenu">
+            <li onclick="cargarTema('O2C',`O2C`)">Introduccion</li>
+            <li onclick="cargarTema('PasosO2C',`O2C`)">Pasos</li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <section class="card" id="contenido">
+        
+      </section>
+      <section id="puclicook">
+        <div id="borrar">
+          <button onclick="Eliminar()">
+            X
+          </button>
+        </div>
+        <div id="publi">
+          <img src="../tp3/imagenes/publicidad.jpg" alt="" id="imgpubli">
+        </div>
+      </section>
+    </main>
+  </div>
+<footer>
+    <div>
+      <h4>Comunicate conmigo a traves de mi Gmail!</h4>
+      <p>nahuel.odi.tv@gmail.com</p>
+    </div>
+    <p>&copy;NahuelGalloMattera</p>
+  </footer>
+  <script>
+    var textTemas = [
+      {
+        text1:"En toda organización, los ciclos Compra-Pago y Venta-Cobranza representan procesos clave para una gestión eficiente y ordenada de las finanzas y operaciones. <br>El ciclo Compra-Pago abarca todas las etapas desde que se identifica la necesidad de adquirir un bien o servicio, pasando por la orden de compra, la recepción de la mercancía, hasta la emisión del pago al proveedor.<br>Por otro lado, el ciclo Venta-Cobranza comienza con la oferta de productos o servicios al cliente, continúa con la entrega y facturación, y finaliza cuando se realiza la cobranza correspondiente.",
+
+        text2:"Estos ciclos no solo impactan la liquidez y el flujo de efectivo de una empresa, sino que también permiten controlar riesgos, fortalecer relaciones comerciales y optimizar los recursos disponibles.<br>Conocerlos y gestionarlos correctamente es esencial para lograr una operación sólida, transparente y sostenible.",
+      },
+      {
+        text1:"",
+        text2:""
+      },
+      {
+        text1:"El ciclo de adquisición a pago (P2P) es un proceso crítico que abarca la totalidad de las actividades de adquisición y pago dentro de una organización. Implica las acciones realizadas desde la compra hasta el pago de los productos o servicios. La gestión eficiente del ciclo del proceso P2P es fundamental para mejorar la eficiencia operativa, controlar los costos, mejorar las relaciones con los proveedores y garantizar el cumplimiento. Este artículo profundiza en lo que implica el ciclo P2P, su importancia y las mejores prácticas para optimizarlo.",
+
+        text2:" En este trabajo se hablara de los pasos de cada uno para finalmente tener una comparacion profunda mediante un cuadro comparativo"
+      },
+      {
+        text1:"<strong>Identificación de una necesidad:</strong> El proceso comienza con la identificación de la necesidad de bienes o servicios dentro de la organización. Varios departamentos determinan lo que se necesita en función de sus necesidades operativas, especificando los estándares de cantidad y calidad.<br><br><strong>Requisición y aprobación:</strong> Una vez identificada la necesidad, se crea una solicitud de compra formal. Este documento interno detalla los bienes o servicios requeridos y se presenta para su aprobación. El flujo de trabajo de solicitud y aprobación ayuda a garantizar que la solicitud de compra sea revisada y autorizada por el personal adecuado, alineándose con el presupuesto de la empresa y las políticas de adquisición.<br><br><strong>Abastecimiento:</strong> Tras la aprobación, comienza la fase de abastecimiento. Este paso de la selección de proveedores implica elegir a los proveedores adecuados y obtener cotizaciones u ofertas. El equipo de compras evalúa a los posibles proveedores en función de factores como el precio, la calidad, el tiempo de entrega y la fiabilidad. Este paso garantiza que se elija el mejor proveedor para satisfacer las necesidades de la organización. Los KPI pueden ayudar a evaluar la eficacia y el rendimiento de los proveedores durante esta fase.<br><br><strong>Orden de compra (PO):</strong> Una vez que la solicitud de compra ha sido aprobada por la dirección correspondiente, el proceso de compra continúa y se emite una orden de compra al proveedor. La orden de pedido es un documento formal en el que se describen los términos y condiciones de la compra, incluida la cantidad, el precio, la fecha de entrega y otros detalles relevantes. Actúa como un contrato vinculante entre la organización y el proveedor.<br><br>",
+
+        text2:"<strong>Recepción:</strong> En el momento de la entrega, el departamento de recepción verifica que los bienes o servicios coincidan con la orden de compra en términos de cantidad y calidad. Este paso implica inspeccionar los artículos entregados para asegurarse de que cumplen los requisitos especificados. Cualquier discrepancia o problema se aborda en esta etapa.<br><br><strong>Facturación y conciliación:</strong> El proveedor presenta una factura por los bienes o servicios entregados. La factura, la orden de compra y el informe de recepción se revisan para garantizar que coincidan. Este proceso de cotejo verifica que los bienes o servicios se recibieron tal como se pidieron y que el importe de la factura es correcto. Este proceso de concordancia a tres bandas ayuda a evitar errores y discrepancias en la facturación. Cualquier discrepancia se resuelve antes de la aprobación de la factura y su avance a la fase de pago.<br><br><strong>Pago:</strong> Cuando se verifica y aprueba la factura, se procesa el pago. La organización emite el pago al proveedor de acuerdo con los términos acordados. Este paso final completa la transacción y cierra el ciclo de adquisición."
+      },
+      {
+        text1:"Uno de los circuitos más importantes de la actividad de explotación de la empresa proveedora de bienes o servicios es mixto: el circuito de ventas y cobros. Ambas funciones están estrechamente interrelacionadas y funcionan de forma simbiótica.",
+
+        text2:"El circuito de ventas y cobros es el único que permite a las empresas producir beneficios. Por un lado, las ventas son la actividad esencial de cualquier negocio y por el otro el flujo de cobros es el verdadero sistema circulatorio de una empresa puesto que, a semejanza del sistema circulatorio en el cuerpo humano, el flujo de cobros proporciona el elemento vital (el dinero) para que la entidad funcione. Por consiguiente, el proceso de cobros es el principal generador de liquidez para la empresa. El circuito de ventas y cobros en la moderna gestión de empresas debe ser contemplado como un proceso global que abarca varias etapas. Con relación al circuito de ventas y cobros hay que destacar dos conceptos fundamentales: el primero es que la dirección de la empresa debe considerar el factor tiempo como algo esencial y debe intentar reducir los plazos todo lo humanamente posible para acortar el tiempo que tarda en recuperar la inversión en clientes; y el segundo es que la dirección de la empresa sólo debe dar por cerrado el ciclo cuando se disponga plenamente del importe de la venta en la tesorería de la empresa."
+      },
+      {
+        text1:"El ciclo Venta-Cobranza es un proceso fundamental para que una empresa recupere los fondos invertidos en su actividad comercial. Está compuesto por cinco etapas principales, cada una con subetapas específicas que, bien gestionadas, permiten reducir los plazos y mejorar la liquidez de la organización.<br><br>La primera etapa es la <strong>venta</strong>, que comienza con la captación del pedido por parte del cliente, seguida de la tramitación y la aceptación del mismo por parte de la empresa. Luego, en la etapa de <strong>entrega</strong>, se prepara el pedido, se confecciona el albarán, la mercancía sale del almacén o fábrica, se transporta y llega al cliente, quien debe dar conformidad al albarán recibido.<br><br>Una vez realizada la entrega, se pasa a la etapa de <strong>facturación</strong>. Esta comienza con la recepción del albarán validado, la confección de la factura, su envío al cliente (ya sea en papel, formato digital o e-factura) y su recepción por la administración del comprador.<br><br>",
+
+        text2:"La cuarta etapa corresponde a la <strong>gestión de cobro</strong>, donde transcurre el plazo acordado para el pago. El cliente efectúa el pago y el proveedor recibe el instrumento correspondiente, como una transferencia o cheque.<br><br>Finalmente, el proceso concluye con el <strong>ingreso en tesorería</strong>, que incluye la tramitación del cobro, el depósito en el banco y el abono efectivo en la cuenta de la empresa. Esta última fase marca el cierre del ciclo, momento en el cual la empresa puede disponer completamente del dinero derivado de la venta.<br><br>Optimizar cada etapa de este circuito permite reducir el período medio de cobro, mejorar el flujo de caja y detectar posibles cuellos de botella que retrasen el retorno de la inversión. Por eso, el ciclo Venta-Cobranza debe considerarse como un todo integrado y estratégico dentro de la gestión empresarial."
+      },
+    ]
+    function Eliminar(){
+      const publi = document.getElementById("imgpubli")
+      publi.style.display = 'none'
+    }
+    function toggleSubmenu(element) {
+      const submenu = element.querySelector('.submenu');
+      submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+    }
+    function mostrar(tema,temario,i){
+
+      const header = document.getElementById("header")
+      const contenedor = document.getElementById('contenido');
+      header.innerText = `Ciclos:${tema} - ${temario}`
+      contenedor.innerHTML = `<div id="imgEjem">
+          <img src="../tp3/imagenes/${temario}.jpg" alt="imagen introductoria" class="imagenIntro">
+        </div>
+        <div id="texto">
+          <div>
+            <p>
+              ${textTemas[i].text1}
+            </p>
+          </div>
+          <div>
+            <p>
+              ${textTemas[i].text2}
+            </p>
+          </div>
+        </div>`;
+
+    }
+    function CuadroMostrar(tema,temario){
+      const header = document.getElementById("header")
+      const contenedor = document.getElementById('contenido');
+      contenedor.innerHTML=`
+        <table class="comparativo">
+        <caption>Comparativa entre Ciclo Compra-Pago (P2P) y Ciclo Venta-Cobranza (O2C)</caption>
+        <tr>
+          <th>Etapa</th>
+          <th>Compra - Pago (P2P)</th>
+          <th>Venta - Cobranza (O2C)</th>
+        </tr>
+        <tr>
+          <td> Inicio del ciclo</td>
+          <td>Identificación de la necesidad de bienes o servicios.</td>
+          <td>Captación del pedido por parte del cliente.</td>
+        </tr>
+        <tr>
+          <td>Preparación</td>
+          <td>Creación y aprobación de la requisición de compra.</td>
+          <td>Tramitación y aceptación del pedido por la empresa.</td>
+        </tr>
+        <tr>
+          <td>Ejecución</td>
+          <td>Selección del proveedor y emisión de la orden de compra.</td>
+          <td>Preparación del pedido, entrega y validación del albarán.</td>
+        </tr>
+        <tr>
+          <td> Documento clave</td>
+          <td>Orden de compra (PO).</td>
+          <td>Factura comercial emitida al cliente.</td>
+        </tr>
+        <tr>
+          <td>Verificación</td>
+          <td>Recepción de productos y validación contra PO.</td>
+          <td>Recepción de conformidad por parte del cliente.</td>
+        </tr>
+        <tr>
+          <td>Facturación</td>
+          <td>Recepción de factura del proveedor y conciliación.</td>
+          <td>Envío de la factura al cliente.</td>
+        </tr>
+        <tr>
+          <td>Cierre del ciclo</td>
+          <td>Pago al proveedor y cierre administrativo.</td>
+          <td>Cobro, ingreso en tesorería y cierre del ciclo.</td>
+        </tr>
+      </table>
+      `
+    }
+    function cargarTema(tema, temario) {
+      const header = document.getElementById("header")
+      const contenedor = document.getElementById('contenido');
+      switch (tema) {
+        case 'Descripcion':
+          mostrar(tema,temario,0);
+          break;
+        case 'Cuadro':
+          CuadroMostrar(tema,temario);
+          break;
+        case 'P2P':
+          mostrar(tema,temario,2);
+          break;
+        case 'PasosP2P':
+          mostrar(tema,temario,3);
+          break;
+        case 'O2C':
+          mostrar(tema,temario,4);
+          break;
+        case 'PasosO2C':
+          mostrar(tema,temario,5);
+          break;
+        default:
+          contenedor.innerHTML = `<h2>Tema no encontrado</h2>`;
+      }
+    }
+  </script>
+</body>
+</html>
